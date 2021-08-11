@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="func()">copy</button> <br>
+    <textarea name="" id="myinput" cols="90" rows="20">
+'''โจทย์คณิตnew
+คัดลอกโค้ดนี้ได้ที่ลิงค์ "bit.ly/outputsect"
+'''
+def func():
+    '''function docstring'''
+    '''ข้อที่ 1'''
+    sum = 0
+    for i in range(1, (10 + 1)):
+        sum += i
+    print(sum)
+    '''ข้อที่ 2'''
+    sum = 0
+    for i in range(10, (1 - 1), -1):
+        if i == 10:
+            sum += i
+        else:
+            sum -= i
+    print(sum)
+    '''ข้อที่ 3'''
+    sum = 0
+    for i in range(11):
+        new_i = 1
+        if (i + 1) == 9:
+            new_i *= 0
+        sum += new_i
+    print(sum)
+    '''ข้อที่ 4'''
+    sum = 0
+    for i in range(1, (4 + 1)):
+        if (i % 2) == 0:
+            sum *= i
+        if (i % 2) == 1:
+            sum += i
+    print(sum)
+    '''ข้อที่ 5'''
+    sum = 11
+    sum += 22
+    sum -= 33
+    sum *= 44
+    sum /= 55
+    print(sum)
+    '''ข้อที่ 6'''
+    sum = (7 + 2 - 3)
+    sum *= 4
+    print(sum)
+    '''ข้อที่ 7'''
+    sum = (42 - 11)
+    sum *= ((7 * 2) + (4 ** 7))
+    print(sum)
+    '''ข้อที่ 8'''
+    sum = 3
+    sum *= ((9 ** 2) + (2 * 5) - 10)
+    sum /= (2 * 7)
+    print(sum)
+    '''ข้อที่ 9'''
+    sum = ((7 - 1) / (2 + 4))
+    sum *= (10 / 51)
+    print(sum)
+    '''ข้อที่ 10'''
+    upper_sum = (4000 * (50 ** 4) * 87)
+    upper_sum += (4000 * 5)
+    lower_sum = ((72 - 111) ** 2)
+    lower_sum += ((10 - 314) ** 2)
+    import math
+    lower_sum = math.sqrt(lower_sum)
+    sum = (upper_sum / lower_sum)
+    print(sum)
+func()
+    </textarea>
+    <script>
+        function func() {
+            copyText = document.getElementById('myinput')
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+</body>
+</html>
