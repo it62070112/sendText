@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="func()">copy</button> <br>
+    <textarea name="" id="myinput" cols="90" rows="20">
 '''follow the lead'''
 def func():
     '''follow the lead'''
@@ -23,3 +34,18 @@ def func():
     print(((7-1)/(2+4))*(10/51))
     print(((4000*(50**4)*87)+(4000*5))/((((72-111)**2)+((10-314)**2))**(0.5)))
 func()
+
+    </textarea>
+    <script>
+        function func() {
+            copyText = document.getElementById('myinput')
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+            /* Alert the copied text */
+            alert("คัดลอกข้อความเรียบร้อยแล้ว");
+        }
+    </script>
+</body>
+</html>
