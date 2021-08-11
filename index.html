@@ -1,40 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button onclick="func()">copy</button> <br>
-    <textarea name="" id="myinput" cols="90" rows="20">
-'''โจทย์คณิต'''
+'''follow the lead'''
 def func():
-    '''function docstring'''
-    print(55)
-    print(-35)
-    print(10)
-    print(14)
-    print(33 - ((33 * 44) / 55))
-    print(24)
-    print(31 * (14 + (4 ** 7)))
-    print(243 / 14)
-    print(10 / 51)
-    import math
-    print(2175000020000/math.sqrt(93937))
+    '''follow the lead'''
+    # print(55)
+    # print(-35)
+    # print(10)
+    # print(14)
+    # print(33 - ((33 * 44) / 55))
+    # print(24)
+    # print(31 * (14 + (4 ** 7)))
+    # print(243 / 14)
+    # print(10 / 51)
+    # import math
+    # print(2175000020000/math.sqrt(93937))
+    print((10+1)*((10-1)+1)/2)
+    print(10-9-8-7-6-5-4-3-2-1)
+    print((1+1+1+1+1+1+1+1)+(1*0)+(1+1))
+    print((2)+(12))
+    print((11+22)-((33*44)/55))
+    print((7+2-3)*4)
+    print((42-11)*((7*2)+(4**7)))
+    print((3*((9**2)+(2*5)-10))/(2*7))
+    print(((7-1)/(2+4))*(10/51))
+    print(((4000*(50**4)*87)+(4000*5))/((((72-111)**2)+((10-314)**2))**(0.5)))
 func()
-    </textarea>
-    <script>
-        function func() {
-            copyText = document.getElementById('myinput')
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /* For mobile devices */
-            /* Copy the text inside the text field */
-            document.execCommand("copy");
-            /* Alert the copied text */
-            alert("คัดลอกข้อความเรียบร้อยแล้ว");
-        }
-    </script>
-</body>
-</html>
