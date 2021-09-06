@@ -1,29 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta var_charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <button onclick="func()">copy</button> <br>
-    <textarea name="" id="myinput" cols="90" rows="20">
-var event = new KeyboardEvent('keydown', { key: 'g', ctrlKey: true });
-var myVar = setInterval(function () { for ( i=0; i<100; i++ ) { document.dispatchEvent(event) } }, 0);
-myVar
-clearInterval(myVar);
-    </textarea>
+    <style>
+        #res {
+            border: 1px solid black;
+            height: 300px;
+            width: 1200px;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    </style>
     <script>
         function func() {
-            copyText = document.getElementById('myinput')
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /* For mobile devices */
-            /* Copy the text inside the text field */
-            document.execCommand("copy");
-            /* Alert the copied text */
-            alert("คัดลอกข้อความเรียบร้อยแล้ว");
+            let num = 1;
+            const in_put = document.getElementById('in_put').value
+            let url_item = "";
+            let title_item = "";
+            const new_line_position = [-1];
+            for (let i=0; i<in_put.length; i++) {
+                let var_char = in_put.substring(i, (i + 1))
+                if (var_char == "\n") {
+                    new_line_position.push(i)
+                }
+            }
+            for (let i=0; i<new_line_position.length; i++) {
+                let each_line = in_put.substring(
+                    (new_line_position[i] + 1),
+                    new_line_position[(i + 1)]
+                );
+                let refer = "id=\"video-title\"";
+                let long_enough = 0;
+                let valid_line = 0;
+                let href_position = null;
+                let extracted_url = "";
+                let extracted_title = "";
+                if (each_line.length >= refer.length) {
+                    long_enough = 1;
+                }
+                if (long_enough == 1) {
+                    for (let j=0; j<((each_line.length-refer.length)+1); j++) {
+                        if (
+                            each_line.substring(j, (j + refer.length))
+                            == refer
+                        ) {
+                            valid_line = 1;
+                        }
+                    }
+                }
+                if (valid_line == 1) {
+                    long_enough = 0;
+                    refer = "href=\"/watch?v=_---_---_--\"";
+                    if (each_line.length >= refer.length) {
+                        long_enough = 1;
+                    }
+                    if (long_enough == 1) {
+                        for (let j=0; j<((
+                            each_line.length-refer.substring(0, 4).length
+                        )+1); j++) {
+                            if (
+                                each_line.substring(j, (j + refer.substring(0, 4).length))
+                                == refer.substring(0, 4)
+                            ) {
+                                href_position = j;
+                            }
+                        }
+                    }
+                }
+                if (href_position != null) {
+                    extracted_url = (
+                        "http://www.youtube.com"
+                        + each_line.substring((href_position + 6), (href_position + 26)));
+                }
+                if (valid_line == 1) {
+                    if (extracted_url != "") {
+                        extracted_title = in_put.substring(
+                            (new_line_position[(i + 1)] + 10),
+                            new_line_position[(i + 2)]
+                        )
+                        url_item += extracted_url + "\n"
+                        title_item += (
+                            ((num + Math.pow(10, 6)) + "").substring(1, 7) + "_"
+                            + in_put.substring(
+                                (new_line_position[(i + 1)] + 11),
+                                new_line_position[(i + 2)]
+                            ) +"\n"
+                        );
+                        num ++;
+                    }
+                }
+            }
+            // console.log(title_item);
+            // console.log(url_item);
+            document.getElementById('res').innerHTML = title_item + url_item
         }
     </script>
+</head>
+<body>
+    <textarea name="" id="in_put" cols="150" rows="20"></textarea>
+    <button onclick="func()">extract</button>
+    <textarea id="res"></textarea>
 </body>
 </html>
